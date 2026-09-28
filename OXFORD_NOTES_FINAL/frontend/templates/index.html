@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oxford Notes - Professional ERP System</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #4c1d95 50%, #581c87 100%);
+            min-height: 100vh;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+        
+        .nav-logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: #1e3a8a;
+            font-size: 20px;
+        }
+        
+        .nav-logo-icon-img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 10px;
+            background: white;
+            padding: 4px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(251,191,36,0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+            50% { transform: translate(-50%, -50%) scale(1.1); opacity: 0.8; }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            background: rgba(251,191,36,0.15);
+            border: 1px solid rgba(251,191,36,0.3);
+            border-radius: 50px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            color: #fbbf24;
+        }
+        
+        h1 {
+            font-size: 72px;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 40px;
+            opacity: 0.85;
+            line-height: 1.6;
+            color: #e0e7ff;
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            padding: 16px 48px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: #1e3a8a;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 10px 40px rgba(251,191,36,0.3);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 50px rgba(251,191,36,0.4);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 80px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.08);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 900;
+            color: #1e3a8a;
+        }
+        
+        .feature-title {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            color: #ffffff;
+        }
+        
+        .feature-desc {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #c7d2fe;
+            opacity: 0.9;
+        }
+        
+        /* Stats Section */
+        .stats {
+            padding: 60px 50px;
+            text-align: center;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .stat-item h3 {
+            font-size: 48px;
+            font-weight: 800;
+            color: #fbbf24;
+            margin-bottom: 8px;
+        }
+        
+        .stat-item p {
+            font-size: 16px;
+            color: #e0e7ff;
+            opacity: 0.8;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 42px; }
+            .hero p { font-size: 18px; }
+            nav { padding: 15px 20px; }
+            .features, .stats { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-logo">
+            <img src="/static/assets/oxford_logo.jpg" alt="Oxford Logo" class="nav-logo-icon-img">
+            <span>Oxford Notes</span>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">🎓 Educational Excellence Platform</div>
+            <h1>Oxford Notes ERP</h1>
+            <p>Modern, powerful, and intuitive education management system. Streamline student records, notes distribution, attendance tracking, and fee management all in one place.</p>
+            <a href="/login" class="btn-primary">Get Started →</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📚</div>
+                <div class="feature-title">Notes Management</div>
+                <div class="feature-desc">Upload, organize, and distribute study materials with view-only or downloadable access control.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">👥</div>
+                <div class="feature-title">Student Records</div>
+                <div class="feature-desc">Comprehensive student profiles with course tracking, guardian info, and enrollment management.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">✓</div>
+                <div class="feature-title">Attendance Tracking</div>
+                <div class="feature-desc">Real-time attendance monitoring with automated reports and percentage calculations.</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <div class="feature-title">Fee Management</div>
+                <div class="feature-desc">Streamlined fee collection with receipt generation and payment history tracking.</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Secure & Reliable</p>
+            </div>
+            <div class="stat-item">
+                <h3>24/7</h3>
+                <p>Access Anywhere</p>
+            </div>
+            <div class="stat-item">
+                <h3>Fast</h3>
+                <p>Performance</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

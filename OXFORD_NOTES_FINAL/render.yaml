@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: oxford-lms
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: pip install -r requirements-web.txt
+    startCommand: gunicorn web_app:app --workers 2 --bind 0.0.0.0:$PORT --timeout 120
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: FLASK_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: oxford-lms-db
+          property: connectionString
+    healthCheckPath: /health
+
+databases:
+  - name: oxford-lms-db
+    databaseName: oxford_lms
+    user: oxford_lms_user
+    plan: free
